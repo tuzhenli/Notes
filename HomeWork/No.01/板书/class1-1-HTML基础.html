@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- 16/9/13 课 1 上课用品 -->
+<!-- 第一行说明这是 html 类型的文件，这是套路 -->
+<!--
+html 是根元素
+  head 里面放辅助信息
+  body 里面放显示的内容
+这个结构是一个基础套路
+-->
+
+<!--
+尖括号里面的是标签
+一般说来 标签成对出现 但也有一些例外比如图片标签 <img>
+
+标签可以有属性，例如下面这个标签 src 就是一个属性
+doge.gif 是属性的值, 值用 单引号或者双引号 包含
+很多情况下也可以不用引号（不推荐）
+<img src="doge.gif">
+-->
+<html>
+<head>
+    <!-- 注释是会被忽略的内容 -->
+    <!--
+    meta 这一句是指定文件的编码
+    通过 charset 属性指定了编码为 utf-8
+    -->
+    <meta charset="UTF-8">
+    <!-- title 是浏览器的标题 -->
+    <title>改动标题</title>
+</head>
+<body>
+    <!-- 以下是常用的标签 -->
+    <!-- 内容可以放在标签里 -->
+    <!-- h1 - h6 是标题 -->
+    <h1>标题</h1>
+    <h2>标题</h2>
+    <h3>标题</h3>
+    <h4>标题</h4>
+    <h5>标题</h5>
+    <h6>标题</h6>
+
+    <!-- div 和 p -->
+    <div>这是 div 里面的内容, div 一般用于分割页面布局</div>
+    <p>
+        这是 p 里面的内容
+        p 表示文章的段落
+    </p>
+
+    <!-- 文本标签 -->
+    <!-- strong em span -->
+    <strong>strong 加粗</strong>
+    <em>em 斜体</em>
+    <span>span 什么效果也不会有</span>
+
+    <!-- html 里面是没有回车的，换行用 br -->
+    <strong>br 可以换行<br>被换行了</strong>
+
+    <!-- 图片标签 -->
+    <!-- src 属性指定了图片的地址 -->
+    <!-- alt 标签指定了图片的说明 -->
+    <img src="image/doge.gif" alt="这是一只神奇的doge">
+
+    <!-- 超链接标签 -->
+    <!--
+    href 是链接指向的地址
+    -->
+    <a href="http://vip.cocode.cc/">指向论坛的超链接</a>
+
+    <!-- 表单相关标签 -->
+    <!-- 下面几个标签是输入数据用的 -->
+    <button>这是一个按钮</button>
+    <textarea></textarea>
+    <!-- type 属性决定了 input 的行为和样式 -->
+    <input type="text" value="gua">
+    <input type="range" value="gua">
+
+    <!-- 列表标签 -->
+    <!-- ol 是有序列表 ordered list -->
+    <!-- li 是列表中的一个元素  list item -->
+    <ol>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ol>
+
+    <!-- ul 是无序列表 unordered list -->
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+</body>
+</html>

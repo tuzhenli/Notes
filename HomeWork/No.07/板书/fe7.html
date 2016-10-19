@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>上课用品 7</title>
+        <style>
+            .gua-hide {
+                display: none;
+            }
+            .slider {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                background: lightyellow;
+            }
+            .slider-img {
+                display: none;
+            }
+            .slider-active {
+                display: inline-block;
+            }
+            #id-button-next {
+                position: absolute;
+                right: 0px;
+                height: 100%;
+                width: 30px;
+                background: transparent;
+                border: none;
+            }
+            span {
+                display: block;
+                background: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <a id='id-a-click' href="#">点击</a>
+        <div class="tip gua-hide">
+            没事别点 很危险
+        </div>
+        <div class="slider">
+            <img class='slider-img slider-active' src="1.gif" alt="" />
+            <img class='slider-img' src="2.jpg" alt="" />
+            <img class='slider-img' src="3.jpg" alt="" />
+            <button id='id-button-next' type="button" name="button"><span>&gt;</span></button>
+        </div>
+        <script src='words.js'></script>
+        <script src='code.js'></script>
+        <script>
+            var a = document.querySelector('#id-a-click')
+            a.addEventListener('mouseover', function(){
+                var tip = document.querySelector('.tip')
+                tip.classList.remove('gua-hide')
+            })
+            a.addEventListener('mouseout', function(){
+                var tip = document.querySelector('.tip')
+                tip.classList.add('gua-hide')
+            })
+
+            var currentIndex = 0
+            var numberOfImages = 3
+            var next = function(){
+                currentIndex = (currentIndex + 1) % numberOfImages
+                var slider = document.querySelector('.slider')
+                var image = document.querySelector('.slider-active')
+                image.classList.remove('slider-active')
+                //
+                var active = document.querySelectorAll('.slider-img')[currentIndex]
+                active.classList.add('slider-active')
+            }
+
+            var nextButton = document.querySelector('#id-button-next')
+            nextButton.addEventListener('click', function(){
+                next()
+            })
+        </script>
+    </body>
+</html>

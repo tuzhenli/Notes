@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>事件冒泡和事件捕获</title>
+        <style>
+        #id1 {
+            background: lightblue;
+            padding: 20px;
+        }
+        #id2 {
+            background: lightyellow;
+            padding: 20px;
+        }
+        </style>
+    </head>
+    <body>
+        <div id='id1'>
+            <div id="id2">
+                <button id='id3'>id3 按钮</button>
+            </div>
+        </div>
+<script>
+var id1 = document.querySelector('#id1')
+var id2 = document.querySelector('#id2')
+var id3 = document.querySelector('#id3')
+id1.addEventListener('click', function(event){
+    console.log('click id1', event)
+})
+id2.addEventListener('click', function(event){
+    console.log('click id2', event)
+})
+id3.addEventListener('click', function(event){
+    console.log('click id3', event)
+    //
+    // event.cancelBubble = true
+})
+
+// 事件捕获是 addEventListener 的第三个参数 useCapture
+id1.addEventListener('click', function(event){
+    console.log('capture click id1', event)
+}, true)
+id2.addEventListener('click', function(event){
+    console.log('capture click id2', event)
+}, true)
+id3.addEventListener('click', function(event){
+    console.log('capture click id3', event)
+}, true)
+
+
+
+
+
+// 创建 AJAX 对象
+var r = new XMLHttpRequest()
+// 设置请求方法和请求地址
+r.open('GET', '/login', true)
+// 注册响应函数
+r.onreadystatechange = function() {
+    console.log('state change', r)
+}
+// 发送请求
+r.send()
+
+
+
+// 创建 AJAX 对象
+var r = new XMLHttpRequest()
+// 设置请求方法和请求地址
+r.open('POST', '/login', true)
+// 设置发送的数据的格式
+r.setRequestHeader('Content-Type', 'application/json')
+// 注册响应函数
+r.onreadystatechange = function() {
+    if (r.readyState === 4) {
+        console.log('state change', r, r.status, r.response)
+        var response = JSON.parse(r.response)
+        console.log('response', response)
+    } else {
+        console.log('change')
+    }
+}
+// 发送请求
+var account = {
+    username: 'gua',
+    password: '123',
+}
+var data = JSON.stringify(account)
+r.send(data)
+
+
+// 可以封装成这样的一个函数
+var ajax = function(method, path, headers, data, reseponseCallback) {
+
+}
+
+
+
+
+
+
+</script>
+    </body>
+</html>

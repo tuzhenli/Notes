@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>enSure-House</title>
+        <style>
+            .doneStyle {
+                text-decoration: line-through;
+                color: white;
+            }
+            .class-OK {
+                background: lightgreen;
+                color: white;
+            }
+            .class-NO {
+                background: red;
+                color: white;
+            }
+            a:link   { color: white; text-decoration: none; } /*去下划线*/
+            a:visited{ color: black; }
+            a:hover  { color: red; }
+            a:active { color: lightblue; }
+            body {
+                background-color: lightblue;    /* 背景色       */
+                margin:0px;                     /* 外边距       */
+                border:0px;                     /* 边框         */
+                border-style: solid;            /* 边框样式     */
+                padding:0px;                    /* 内边距       */
+                font-family: Microsoft YaHei;   /* 字体         */
+                font-size: 22px;                /* 字体大小     */
+                text-align: center;             /* 对齐         */
+            }
+            button {
+                margin-top: 10px;
+                font-family: Microsoft YaHei;
+                font-size: 22px;
+            }
+            input {
+                margin-top:10px;
+                margin-bottom:10px;
+                border:0px;
+                padding:3px;
+                font-family: Microsoft YaHei;
+                font-size: 32px;
+                text-align: center;
+            }
+            .top {
+                border:120px;
+                padding:0px;
+                border-style: solid;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="top">
+            <h1><a target='blank' href="https://www.zybuluo.com/iwangyang/note/519509">(●'◡'●)</a></h1>
+        </div>
+        <script>
+            var log = function() {
+                console.log.apply(console, arguments)
+                }
+                //定义自己的log很重要 enSure增强进化版
+            var ensure = function( def, result, message ) {
+                if( JSON.stringify( def ) !== JSON.stringify( result ) ) {
+                    log(`异常————————————> ${message}`)
+                    log('def    =', def, '\nresult =', result)
+                    }
+                }
+        </script>
+        <!-- 定制 log -->
+        <!-- <script src="No.8HomeWork 17.js" charset="utf-8"></script> -->
+        <script src="No.8HomeWork 18-19.js" charset="utf-8"></script>
+        <!-- 代码 -->
+    </body>
+</html>

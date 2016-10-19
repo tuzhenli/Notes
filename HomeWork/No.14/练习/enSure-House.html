@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>enSure-House</title>
+        <style>
+            a:link   { color: white; text-decoration: none; } /*去下划线*/
+            a:visited{ color: black; }
+            a:hover  { color: red; cursor: pointer; } /*鼠标样式*/
+            a:active { color: lightblue; }
+            body {
+                background: lightblue;          /* 背景色       */
+                margin:0px;                     /* 外边距       */
+                border:0px;                     /* 边框         */
+                border-style: solid;            /* 边框样式     */
+                padding:0px;                    /* 内边距       */
+                font-family: Microsoft YaHei;   /* 字体         */
+                font-size: 22px;                /* 字体大小     */
+                text-align: center;             /* 对齐         */
+            }
+            .top {
+                border:120px;
+                padding:0px;
+                border-style: solid;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var log = function() {
+                console.log.apply(console, arguments)
+                }
+                //定义自己的log很重要 enSure增强进化版
+            var ensure = function( def, result, message ) {
+                if( JSON.stringify( def ) !== JSON.stringify( result ) ) {
+                    log('异常————————————>', message)
+                    log('def    = "'+def+'"\nresult = "'+result+'"')
+                    }
+                }
+        </script>
+        <!-- 定制 log -->
+		<script src="jquery.js" charset="utf-8"></script>
+        <script src="NO.14 HomeWork.js"  charset="utf-8"></script>
+        <!-- 代码 debug -->
+    </body>
+</html>

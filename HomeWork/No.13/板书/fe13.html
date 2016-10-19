@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>fe 13</title>
+        <style>
+            .done {
+                color: lightgray;
+                text-decoration: line-through;
+            }
+            .modal-alert {
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+                background: black;
+                opacity: 0.5;
+            }
+        </style>
+        <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="form">
+                <input id="id-input-add" name="name" value="">
+                <br>
+                <button id='id-button-add' type="button" name="button">Add</button>
+            </div>
+            <div class="" id='id-div-todo'>
+                <div class="todo-cell" data-id='401'>
+                    <span><h1>hello</h1></span>
+                    <div class="">
+                        <button class='edit-button' type="button" name="button">edit</button>
+                        <button class='delete-button' type="button" name="button">delete</button>
+                        <button class='complete-button' type="button" name="button">complete</button>
+                    </div>
+                </div>
+                <div class="todo-cell" data-id='101'>
+                    <span><h1>world</h1></span>
+                    <div class="">
+                        <button class='edit-button' type="button" name="button">edit</button>
+                        <button class='delete-button' type="button" name="button">delete</button>
+                        <button class='complete-button' type="button" name="button">complete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="modal-alert">
+            <div class="modal-title">
+                弹窗
+            </div>
+            <button type="button" name="button">ok</button>
+        </div> -->
+        <script>
+        var todoTemplete = function(todo) {
+            var t = `
+            <div class="todo-cell">
+                <span>${todo}</span>
+                <div class="">
+                    <button class='edit-button' type="button" name="button">edit</button>
+                    <button class='delete-button' type="button" name="button">delete</button>
+                    <button class='complete-button' type="button" name="button">complete</button>
+                </div>
+            </div>
+            `
+            return t
+        }
+
+        $('#id-button-add').on('click', function( ) {
+            var todo = $('#id-input-add').val()
+            $('#id-div-todo').append(todoTemplete(todo))
+        })
+
+        // jQuery 事件委托的方式
+        $('#id-div-todo').on('click', '.delete-button', function(event){
+            console.log('click')
+
+            var button = $(event.target)
+            button.closest('.todo-cell').remove()
+        })
+
+        $('#id-div-todo').on('click', '.complete-button', function(event){
+            console.log('click 完成')
+            var button = $(event.target)
+            var span = button.closest('.todo-cell').find('span')
+            span.toggleClass('done')
+        })
+
+        $('#id-div-todo').on('click', '.edit-button', function(event){
+            console.log('click edit')
+            var button = $(event.target)
+            var span = button.closest('.todo-cell').find('span')
+            var t = span.text()
+            console.log('span.text', t)
+        })
+        // console.log('bind events')
+        // var deleteButtons = $('.delete-button')
+        // console.log(deleteButtons)
+        // deleteButtons.on('click', function(event){
+        //     console.log('click')
+        //
+        //     var button = $(event.target)
+        //     button.closest('.todo-cell').remove()
+        // })
+        // console.log('bind end')
+
+        /*
+        data数据获取方式
+        dom API 如下
+        var domDiv = $('.todo-cell')[0]
+        domDiv.dataset.id
+        "401"
+
+        jQuery API 如下
+        var jqdiv = $($('.todo-cell')[0])
+        jqdiv.data('id')
+        */
+
+        $('#id-input-add').on('keydown', function(event){
+            console.log('key down', event)
+        })
+
+        // 数组操作
+        var cells = $('.todo-cell')
+        for (var i = 0; i < cells.length; i++) {
+            var c = cells[i]
+            // console.log('cell', i, c)
+        }
+        // jQuery 提供遍历数组的 each 函数
+        var every = function(i, e) {
+            console.log(arguments)
+            console.log(i, e)
+        }
+        $('.todo-cell').each( every )
+
+        // map 操作
+        // map 就是以前上课讲过的 process 函数
+        // 对每个数组中的元素调用函数得到返回值组成新的数组
+        var foo = [1, 2, 3, 4, 5]
+        var bar = $.map(foo, function(value){
+            return value * value
+        })
+
+        // grep 相当于 filter 函数, 以前上课写过的
+        var far = $.grep(foo, function(value){
+            return value % 2 == 0
+        })
+
+        // jQuery AJAX 函数用法
+        // var request = {
+        //     url: '/uploads/tags.json',
+        //     type: 'get',
+        //     contentType: 'application/json',
+        //     success: function() {
+        //         console.log(arguments)
+        //     },
+        //     error: function() {
+        //         console.log(arguments)
+        //     }
+        // }
+        // $.ajax(request)
+
+        </script>
+    </body>
+</html>

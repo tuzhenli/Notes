@@ -1,0 +1,49 @@
+/*线框*/
+body {
+  font-size: 20;
+  background: white;
+  font-family: Microsoft Yahei;
+}
+
+div {
+  outline-style: dashed;
+  outline-color: red;
+  outline-width: 1px;
+
+}
+/*顶部*/
+.Top {
+  margin:0px;
+  padding: 10px;
+  text-align: center;
+}
+/*导航*/
+.Navigation {
+  margin:0px;
+  padding: 10px;
+}
+/*内容*/
+.All-Content {
+  /*flex 可以让它里面的元素(这里是 content 和 sidebar)使用 flex 布局*/
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+.Left {
+  flex: 1;
+  padding: 10px;
+}
+.Right {
+  flex: 1;
+  padding: 10px;
+}
+.Content {
+  flex: 5;
+  padding: 10px;
+}
+/*页脚*/
+.Footer {
+  margin:0px;
+  padding: 10px;
+  text-align: center;
+}

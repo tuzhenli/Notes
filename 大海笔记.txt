@@ -1,4 +1,4 @@
-# 萧瓜 HTML CSS Javascript
+﻿# 萧瓜 HTML CSS Javascript
 
 标签：笔记
 [JavaScript](https://www.zybuluo.com/iwangyang/note/519509) / [Python](https://www.zybuluo.com/iwangyang/note/460072)
