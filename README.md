@@ -1,0 +1,742 @@
+# 萧瓜 HTML CSS Javascript
+
+标签：笔记
+[JavaScript](https://www.zybuluo.com/iwangyang/note/519509) / [Python](https://www.zybuluo.com/iwangyang/note/460072)
+ ------
+
+|简历|笔记|作品|
+| :-:| :-:| :-:|
+
+ ------
+
+### <i class="icon-asterisk icon-3x"></i> ——[金光闪闪 线上编程培训](https://zhuanlan.zhihu.com/p/22356306)
+
+### 　
+
+|HTML|CSS|Javascript|
+|:-:|:-:|:-:|
+|0|1.5|8.5|
+
+> 《Head First HTML 与 CSS》第2版 ; [课后作业](http://vip.cocode.cc/chest/shared/2)
+
+# [CSS](http://www.w3school.com.cn/cssref/index.asp)
+
+|定义|优先级 从高到低|
+|:-:|-:|
+|内联|禁止使用 < h1 `~~style="color: red;"~~` > Hello World < /h1 >|
+|中联|< style > `h1{ color: red; }` < /style >|
+|外联|< link rel="stylesheet" href="`tag.css`" >|
+
+### 常用
+
+```css
+body {
+    background: lightblue;          /* 背景色   */
+    margin:0px;                     /* 外边距   */
+    border:0px;                     /* 边框     */
+    border-style: solid;            /* 边框样式 */
+    padding:0px;                    /* 内边距   */
+    font-family: Microsoft YaHei;   /* 字体     */
+    font-size: 22px;                /* 字体大小 */
+    text-align: center;             /* 对齐     */
+}
+```
+```css
+.tanChuang {
+    z-index: 100;                   /* 顶层     */
+    position: fixed;                /* 定位     */
+    top: 0px;                       /* 顶部     */
+    left: 0px;                      /* 左部     */
+    width: 100%;
+    height: 100%;
+    opacity: 0.96;                  /* 透明度   */
+    background: black;
+    color: white;
+}
+.tanCenter {
+    position:relative;
+    top: 50%;
+    transform: translateY(-61.8%);  /* Y轴距离  */
+}
+// 内联元素 居中
+// 区块元素 居中 margin: 0px auto;
+```
+```css
+.circle {
+    width:  50px;
+    height: 50px;
+    border-radius: 50%;             /* 圆角     */
+}
+```
+
+### [伪类](http://www.w3school.com.cn/css/css_pseudo_classes.asp)
+|:link|未访问|:hover|悬停|
+|:-:|:-:|:-:|:-:|
+|**:visited**|**已访问**|**:active**|**选定**|
+```
+a:link   { color: white; text-decoration: none; } /*去下划线*/
+a:visited{ color: black; }
+a:hover  { color: red; cursor: pointer; } /*鼠标样式*/
+a:active { color: lightblue; }
+
+a.class:visited {color: white;}    /* 独立伪类 */
+```
+
+### position [定位](http://www.w3school.com.cn/cssref/pr_class_position.asp)
+|值|描述|
+|:-|:-|
+|absolute|父元素 绝对定位|
+|fixed	 |浏览器 绝对定位|
+|relative|相对定位|
+
+
+### 显示 [display](http://www.w3school.com.cn/cssref/pr_class_display.asp)
+|值|描述|
+|:-|:-|
+|none|不显示|
+|block|区块元素 独占一行|
+|inline|内联元素 无法设置宽高|
+|inline-block|内联元素 可以设置宽高|
+
+### [盒模型](http://www.w3school.com.cn/css/css_boxmodel.asp)
+
+|BOX|单位|描述|
+|:-||:-|
+|margin:|0px;|外边距|
+|border:|0px;|边框|
+|padding:|0px;|内边距|
+|width:|80%;|宽|
+|height:|100%;|高|
+
+# HTML
+
+### 选择器
+
+> 举例：< `h1` id="`id-h1`" class="`class-h1`"> 大校 < /h1 >
+
+|元素 选择器|符号|优先级 从高到低|
+|:-:|:-:|-:|
+|!important|!|h1 { color: red `!important`; }|
+|id|#|`#id-h1` { color: red; }|
+|class|.|`.class-h1` { color: red; }|
+|标签|无|`h1` { color: red; }|
+
+### 编码
+
+|ASCII - Unicode 编码|说明|
+|:-: |:-: |
+|`'Aa'`.charCodeAt( `0` ) === 65|`0` 下标|
+|String.fromCharCode( `65` ) === "A"|`65` ASCII码|
+|( `10` ).toString( `2` ) === "1010"|进制转换|
+
+# JavaScript
+
+|定义|插入 < /body > 之前 顺序执行|
+|:-:|-:|
+|中联|< script >`log('Hello World!')`< /script >|
+|外联|< script src="`Echo.js`" charset="utf-8">< /script >|
+
+### **Array** [数组](http://www.w3school.com.cn/jsref/jsref_obj_array.asp)
+
+|属性|秒懂释义|相当于|
+| :- |    :-  |  :-  |
+|**slice( )**|复制 切片并返回|支持负索引
+|**splice( )**|删除 切片并返回|支持负索引
+|[concat](http://www.w3school.com.cn/jsref/jsref_concat_array.asp)( array )|连接 数组|
+|length|返回 长度|len( )|
+|push( )|末尾 添加一个元素|.append( )|
+|join( str )|返回 字符串 str 分隔|
+|reverse( )|翻转 所有元素|
+
+### **Str** [字符串](http://www.w3school.com.cn/jsref/jsref_obj_string.asp)
+
+```javascript
+var name = '大海' //格式化字符串
+console.log( `尊敬的${name}，你好！` ) //使用反引号 ``
+
+'Man'.split('').reverse().join('')   //翻转字符串
+```
+|属性|说明|
+| :- | :- |
+|**slice( )**|返回 切片|
+|includes( str )|检查 是否包含 str 返回 bool|
+|split( str )|以 str 分割字符串 返回 array|
+|toLowerCase()|字母转小写|
+|toUpperCase()|字母转大写|
+|indexOf( str )|查找 是否包含 str 返回 下标|
+|replace( pattern, str )| 替换 pattern 为 str ；`/img`全部替换|
+|search( [pattern](#regexp-正则表达式) )|查找 pattern 返回下标 否则返回 -1
+
+|转义符|说明|
+|:-:|:-:|
+|`\n`|换行|
+|`\t`|TAB|
+|`\\`|反斜杠|
+|`\'`|单引号|
+|`\"`|双引号|
+
+### **Object** 字典
+> `dict` = { '初中生':6, '高中生':7, '大学生':8 }
+|属性|说明
+|:-|:-|
+| `dict` = { key : 'value', }|创建
+|`dict` ['小学生'] = 4|      添加
+|`dict` ['小学生'] = 5|      修改
+|delete `dict` ['大学生']|   删除
+|Object.keys( `dict` )|      返回 keys
+### **RegExp** [正则表达式](http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp)
+
+- 语法：/`Pattern`/`Property`
+|Property|说明|
+|:-:|:-:|
+|/i|无视大小写|
+|/g|全局匹配|
+|/m|多行匹配 |
+|/img|组合使用|
+
+
+- 常用
+
+|正则表达式|说明|
+|:-:|:-:|
+|/[A-Z]\|[a-z]/img|所有字母|
+|/[0-9]/img|所有数字|
+
+
+- 编译：**new RegExp**( `Pattern`, `Property` )
+```javascript
+var name = '大海'
+var re = new RegExp( `${name}`, 'img' ) //加变量
+```
+
+### **Json** 格式
+```
+var x = JSON.stringify( [1,2,3] ) //编译
+
+var y = JSON.parse( x )           //读取
+```
+
+### 循环
+
+```javascript
+for (var i = 0; i < iterable.length; i++) {
+    iterable[i]
+    }
+    //相当于Python for循环
+```
+```
+for (i of iterable) { i }           // i = 值
+for (i in iterable) ( iterable[i] } // i = 下标
+```
+```javascript
+var i = 0
+while (i < n) {
+    i+=1
+    }
+    //相当于Python while循环
+```
+
+### 逻辑符号
+
+| 与| 或| 非|
+|:-:|:-:|:-:|
+|&&|\|\| |!!|
+|and|or |not|
+
+> **Cmd Markdown** [简明语法手册](https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown)
+
+# **DOM API**
+- DOM 是 HTML 文件
+- DOM API 是浏览器提供给 JavaScript 操作 html 页面的交互方式
+
+### 常用
+```
+<input id="id" type="text" value="Gua">
+```
+|属性 [（元素 .class #id）](#选择器)|说明|
+|:-  |:-: |
+|var `omg` = document.querySelector( `'#id'` )|获取 DOM对象||
+|var `omgValue` = `omg`.getAttribute( `'value'` )|获取 属性值 |
+|`omg`.setAttribute( `'value'` , `'Gua'` )|修改 属性值|
+|`omg`.hasAttribute( `'value'` )|查询 是否存在|
+|`omg`.removeAttribute( `'type'` )|删除 某个属性|
+|var `allProperty` = `omg`.attributes|查找 所有属性|
+|`omg`.remove( )|删除 元素|
+|`omg`.**insertAdjacentHTML**( `'beforeend'`, `html` )|插入 HTML|
+
+|insertAdjacentHTML|标签 描述|
+|:-|:-|
+|beforebegin|开始标记 前|
+|afterbegin|开始标记 后|
+|beforeend|结束标记 前|
+|afterend|结束标记 后|
+
+### LocalStorage 本地存储
+
+> 贮藏：localStorage[ `'name'` ] = '大海'
+> 取出：localStorage[ `'name'` ]
+
+- 类似于本地 5MB Object 只能存 字符串，使用 Json 转字符串
+
+# **Event**
+
+> 事件绑定：
+区分元素 > 绑定元素 > 触发Event > 操作元素
+
+### 事件
+|var Event = function() {|
+|:-  |
+|var `input` = document.querySelector( `"#id-input"` )|
+|// 获得 输入框 id-input|
+|var `inputValue` = input[ `'value'` ]|
+|// 获得 value 值|
+|var `notepadCont` = document.querySelector( `"#id-div-cont"` )|
+|`html` = \` `<div> 输入的值：${ inputValue } </div>` \`|
+|// 获得 包含 value 的 html 代码|
+|`notepad_Cont`.insertAdjacentHTML( 'beforeend', `html` )|
+|// 插入 包含 value 的 html 代码 到 父元素 末尾
+|**}**|
+
+### 绑定事件
+
+|说明|
+|:-  |
+|var `button` = document.querySelector( `"#id-div-cont"` )
+|// 获取 元素 或 父元素|
+|`button`.addEventListener( `'click'`, [Event](#事件), false )|
+|// 事件 绑定 或 委托  |
+
+
+|[常用事件](http://www.w3school.com.cn/jsref/jsref_events.asp)|说明|
+|:- |:-: |
+|'focus'|获得 焦点|
+|'blur'|失去 焦点|
+|'click'|单击|
+|'dblclick'|双击|
+|'mouseover'|悬停|
+|'mouseout'|移开|
+|'keydown'|按下 某键|
+
+### 事件委托
+
+|var Event = function( event ) { |
+|:-  |
+|var target = event.target|
+|// 获取 目标|
+|var `fu` = target.parentElement|
+|// 获取 父元素|
+|if ( target.classList.contains( `'del'` ) ) {|
+|// 监听 事件 del |
+|`fu`.remove( ) }|
+|// 删除 父元素|
+|else if ( target.classList.contains( `'done'` ) ) {|
+|// 监听  事件 done|
+|[ClassOFF](#classoff-开关)( `fu`, `'doneStyle'` ) }
+|// 操作 父元素
+|**}**|
+
+|事件 event 参数|描述|
+|:-|-:|
+|event.target.parentElement|父元素|
+|event.target|元素|
+|event.target.children|子元素|
+|**event.target.parentElement.children**|父子元素|
+
+# **Ajax**
+
+- 阿贾克斯中 **event** 事件本身，包含触发事件所有内容
+
+### **GET**
+```javascript
+var ajaxGet = function( ku ) {
+    var r = new XMLHttpRequest()        // 创建 AJAX 对象
+    r.open( 'GET', ku.url, true )       // 设置 请求方法 地址
+    r.onreadystatechange = function() {
+        if (r.readyState === 4) {       // 如果 完成
+            ku.callback(r.response)     // 注册 响应函数 结果
+        }
+    }
+    r.send()                            // 发送 请求
+}
+var ku = {
+    url: '/login' ,                     // 地址
+    callback: function(response) {      // 响应函数
+        console.log(response)
+    }
+}
+ajaxGet( ku )
+```
+- event.target.**readyState**
+
+|状态|说明|状态|说明|
+|:-:|:-:|:-:|:-:|
+|1|载入|2|载入完成|
+|3|交互|4|交互完成|
+
+### **POST**
+```
+var ajax = function( ku ) {
+    var r = new XMLHttpRequest( )      // 创建 AJAX 对象
+    r.open( ku.method, ku.url, true )  // 设置 请求方法 地址
+    r.setRequestHeader('Content-Type', ku.ContentType)
+    r.onreadystatechange = function() {
+        if (r.readyState === 4) {      // 完成
+            ku.callback(r.response)    // 注册 响应函数 结果
+        }
+    }
+    r.send( ku.data )                  // 发送 请求
+}
+var ku = {
+    method:         'POST',            // 请求方法
+    url:            '/login',          // 地址
+    ContentType:    'application/json',// 数据格式
+    data: JSON.stringify({             // 发送内容
+        username:   'abc',
+        password:   '123',
+    }),
+    callback: function(response) {     // 响应函数
+        console.log('result:', response )
+    }
+}
+ajax( ku )
+```
+
+### **API** 接口封装
+```
+var AjaxApi = function(){
+    this.baseUrl = 'http://vip.cocode.cc:3000/todo/'
+    this.qq = '616615503'
+}
+// 定义 初始对象
+AjaxApi.prototype.get = function (path, callback) {
+    var url = this.baseUrl + this.qq + path
+    var r = new XMLHttpRequest()       // 创建 AJAX 对象
+    r.open( 'GET', url, true )         // 设置 请求方法 地址
+    r.onreadystatechange = function() {
+        if (r.readyState === 4) {      // 完成
+            callback(r.response)       // 回调 函数
+        }
+    }
+    r.send()                           // 发送 请求
+}
+AjaxApi.prototype.post = function (path, data, callback) {
+    var url = this.baseUrl + this.qq + path
+    var r = new XMLHttpRequest( )      // 创建 AJAX 对象
+    r.open( 'POST', url, true )        // 设置 请求方法 地址
+    r.setRequestHeader('Content-Type', 'application/json')
+    r.onreadystatechange = function() {
+        if (r.readyState === 4) {      // 完成
+            callback(r.response)       // 注册 响应函数 结果
+        }
+    }
+    var data = { task: data }          // 字符串 转 object
+    var data = JSON.stringify(data)
+    r.send( data )                     // 发送 请求
+}
+// 封装 GET / POST 结束
+AjaxApi.prototype.all = function(callback) {
+    var path = '/all'
+    this.get(path, callback)
+}
+AjaxApi.prototype.add = function(data, callback) {
+    var path = '/add'
+    this.post(path, data, callback)
+}
+AjaxApi.prototype.update = function(data, id, callback) {
+    var path = '/update/' + id
+    this.post(path, data, callback)
+}
+AjaxApi.prototype.delete = function(id, callback) {
+    var path = '/delete/' + id
+    this.get(path, callback)
+}
+// 封装 API 结束
+var api = new AjaxApi()
+var callback = function(response) {
+    console.log( JSON.parse(response) )
+}
+// api.all( callback ) // 全部
+// api.add( '大校', callback ) // 添加
+// api.update( 'Hasaki', 607, callback ) // 更新
+// api.delete( 607, callback ) // 删除
+```
+> 参数说明　`callback`　回调函数　`data`　字符串　`id`　数字
+#
+# 定制方法 / 内置函数
+
+### **常用**
+
+|属性|说明|
+|:-  |:-  |
+|typeof( object )|判断 类型|
+|String( number )|数字 转 字符串|
+|Number( string )|字符串 转 数字|
+
+### **Math** [数学](http://www.w3school.com.cn/jsref/jsref_obj_math.asp)
+
+|属性|说明|举栗|
+|:-  |:-  |:-  |
+|floor( x )|返回 <= x 整数 向下取整|( -2.1 )  = -3|
+|ceil( x ) |返回 >= x 整数 向上取整|( -2.1 )  = -2|
+|round( x )|返回 x 四舍五入|( 5.4 )  = 5|
+|abs( x )  |返回 x 绝对值|
+|random( ) |生成 0 - 1 随机小数|
+
+### **Range** 遍历
+```
+var range = function( n ) {
+    var list = []
+    for (var i = 1; i < n + 1; i++) {
+        list.push( i )
+    } return list
+}
+//举例 range(5) = [1, 2, 3, 4, 5]
+```
+
+### **Filter** 过滤器
+```
+var filter = function( def, iterable ) {
+    var list = []
+    for(var i = 0; i < iterable.length; i++) {
+        var a = iterable[i]
+        if ( def( a ) ){
+            list.push(a)
+        }
+    } return list
+}
+//举例：
+//var oshu = function( x ) { return x % 2 == 0 }
+//filter( oshu, range( 10 )) = [2, 4, 6, 8, 10]
+```
+
+### **Time** [时间](http://www.w3school.com.cn/jsref/jsref_obj_date.asp)
+```
+var time = function( z ) {
+    if (z === undefined) { z = new Date() }
+    var x = z.toString()
+    var zh     = '天一二三四五六'
+    var Year   = x.slice(10,15)
+    var Month  = z.getMonth() + 1
+    var Day    = x.slice(8,10)
+    var Hour   = x.slice(16,18)
+    var Minute = x.slice(19,21)
+    var Second = x.slice(22,24)
+    var Week   = zh[ z.getDay() ]
+    if ( String(Month).length === 1) {
+        Month = '0' + Month
+    }
+    return `${Year}年${Month}月${Day}日 ${Hour}时${Minute}分${Second}秒 星期${Week}`
+}
+time( ) //载入时间对象 否则为当前时间
+```
+
+### **Prime** 素数
+```
+var prime = function(n) {
+    var range = function( a, b ) {
+        var list = []
+        for (var i = a; i < b; i++) {
+            list.push( i )
+            } return list
+        } // 修改 range 遍历
+    var num = range( 0, n + 1 )
+    for (i of range( 2, n + 1 )) {
+        if ( num[i] === 0 ) {
+            continue
+        }
+        for (k of num.slice( i + 1)) {
+            if ( k % i === 0 ) {
+                num[k] = 0
+            }
+        }
+    }
+    sub = num.slice(2) // 素数 >= 2
+    var noZero = function( x ) { return x != 0 }
+    return filter( noZero, sub ) //Filter 过滤器
+} //举例 prime(10) = [2, 3, 5, 7]
+```
+
+### **ClassOFF** 开关
+```
+var ClassOFF = function( fu, CalssName ) {
+    var Class = fu.classList
+    if( Class.contains( CalssName ) ) {      //如果 包含
+        Class.remove  ( CalssName )          //删除
+    } else {
+        Class.add     ( CalssName )          //添加
+    }
+} // 备注：CalssName = CSS样式
+```
+# **jQuery**
+
+### 常用
+
+|选择器||
+|:-|:-|
+|\$( `'.class'` )|匹配所有 符合[元素](#选择器) 返回 数组|
+|\$( `'*'` )|全部匹配|
+|\$( `' #id, .class ,div '`)|组选择|
+
+|**jQuery 对象 方法**||
+|:-|:-|
+|find(  `'#id'` ) |查找 元素|
+|cloest( `'.class'` )|查找 父元素（一直向上 找到为止）|
+|parent()|查找 父元素|
+|children()|查找 子元素|
+|parent().children()|查找 父子元素|
+|siblings()|查找 父子元素（除过 自己）|
+
+|**Class 操作**||
+|:-|:-|
+|addClass( `'.className'` )|添加|
+|removeClass( `'.className'` )|删除|
+|toggleClass( `'.className'` )|开关|
+
+|**HTML 操作**||
+|:-|:-|
+|append( )|末尾|
+|prepend( )|开头|
+|before( )|之前|
+|after( )|之后|
+
+|**取值**||
+|:-|:-|
+|val()|**input** 标签 专属|
+|text( )|格式化 文本（有参数则为赋值）|
+|html( )|返回 字符串（有参数则为赋值）|
+
+### **jQ** 事件绑定
+```javascript
+var Event = function( ) {
+    $('.tanChuang').remove()
+}
+```
+```javascript
+$( '#id-tan-OK' ).on( 'click', Event )
+// 绑定 元素 #id-button-add
+```
+
+### **jQ** 事件委托
+```javascript
+var Event = function( event ) {
+    var button = $( event.target )          // 获取 目标
+    var fu = button.cloest( '.notePad_one' )// 获取 父元素
+    fu.remove()                             // 删除 父元素
+}
+```
+```javascript
+$( '#id-div-cont' ).on( 'click', '.del', Event )
+// 绑定 父元素 #id-div-cont 监听 .del
+```
+
+
+### **jQ** **each** 数组遍历
+
+参数：`index` 和 `element`
+```
+var eve = function(i, e) {
+    console.log(i, e)
+}
+$('.notePad_one').each( eve )
+```
+### **jQ** **map** 遍历
+```
+var a = [1, 2, 3, 4, 5]
+var eve = function( i ) {
+    return i * i
+}
+var b = $.map( a, eve )
+// 结果 b = [1, 4, 9, 16, 25]
+```
+### **jQ** **filter** 过滤器
+```
+var a = [1, 2, 3, 4, 5]
+var eve = function( i ) {
+    return i % 2 == 1
+}
+var b = $.grep( a, eve )
+// 结果 b = [1, 3, 5]
+```
+
+### **jQ** **Ajax**
+```
+var request = {
+    url: '/uploads/tags.json',
+    type: 'get',
+    contentType: 'application/json',
+    success: function() {
+        console.log(arguments)
+    },
+    error: function() {
+        console.log(arguments)
+    }
+}
+$.ajax(request)
+```
+
+### **jQ** **Data** 数据
+
+```javascript
+<div class="tan" data-id='101'>
+
+var div = $( $('.notePad_one')[0] )
+div.data('id')
+
+```
+
+# **DEBUG**
+
+### log 大法 / ensure 测试
+
+```javascript
+var log = function() {
+    console.log.apply(console, arguments)
+    }
+    //定义自己的log很重要 enSure增强进化版 穿衣服
+var ensure = function( def, result, message ) {
+    if( JSON.stringify( def ) !== JSON.stringify( result ) ) {
+        log('异常————————————>', message)
+        log('def    = "'+def+'"\nresult = "'+result+'"')
+        }
+    }
+
+//测试 结果(手工计算) 是否等于 函数返回值 否则 报错
+//举例：
+var sum = function(a, b) {
+    return a + b
+}
+ensure( sum(3, 3) ,5 ,'sum错误' )
+```
+> 测试：ensure( `函数` ( `参数` ) , `结果` , '`function` 错误' )
+
+> 参数未知：log( **arguments** )　/　事件未知：log( **event** )
+# 参数说明
+
+|  名称 |  秒懂释义 |
+|  :-   |   :-  |
+|function|函数|
+|object|对象|
+|iterable|可迭代对象|
+|path|路径|
+|url|网址|
+|pattern|[正则表达式](#regexp-正则表达式)|
+|string|字符串|
+|property|属性|
+|event|[事件](#event)|
+
+# 注释
+
+|注释|快捷键 CTRL + /|单行|
+|:-:|:-:|:-:|
+|JavaScript||`//` JS|
+|CSS|`/*` CSS `*/`|
+|HTML|`<!--` HTML `-->`|
+|Python|` ``` ` Python ` ``` `|`#` Python|
+
+参考资料： [MDN](https://developer.mozilla.org/cn/) /  [w3school](http://www.w3school.com.cn) / [jQuery](http://cdn.bootcss.com/jquery/3.1.1/jquery.js) / [Pure](http://purecss.io) / [Bootstrap](http://getbootstrap.com)  / [储瓜间](http://vip.cocode.cc/chest/shared/1859)
+
+相关链接：[少杰笔记](https://www.zybuluo.com/Jason1992/note/512575) / [BIGC-HUB](https://github.com/BIGC-HUB)
+
+>
+**Atom** 字体 **Consolas**
+**Atom** 汉化插件 **simplified-chinese-menu**
