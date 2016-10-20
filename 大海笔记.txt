@@ -82,12 +82,14 @@ a:active { color: lightblue; }
 a.class:visited {color: white;}    /* 独立伪类 */
 ```
 
-### position [定位](http://www.w3school.com.cn/cssref/pr_class_position.asp)
+### 定位 [position](http://www.w3school.com.cn/cssref/pr_class_position.asp)
 |值|描述|
 |:-|:-|
-|absolute|父元素 绝对定位|
-|fixed	 |浏览器 绝对定位|
-|relative|相对定位|
+|static  |默认 `static`|
+|relative|~~相对定位~~ 偏移|
+|absolute|相对 非`static`父元素 绝对定位|
+|fixed	 |相对 浏览器 绝对定位|
+
 
 
 ### 显示 [display](http://www.w3school.com.cn/cssref/pr_class_display.asp)
@@ -283,7 +285,7 @@ while (i < n) {
 > 事件绑定：
 区分元素 > 绑定元素 > 触发Event > 操作元素
 
-### 事件
+### 事件 
 |var Event = function() {|
 |:-  |
 |var `input` = document.querySelector( `"#id-input"` )|
@@ -342,7 +344,7 @@ while (i < n) {
 |event.target.children|子元素|
 |**event.target.parentElement.children**|父子元素|
 
-# **Ajax**
+# **Ajax** 
 
 - 阿贾克斯中 **event** 事件本身，包含触发事件所有内容
 
@@ -455,13 +457,13 @@ var api = new AjaxApi()
 var callback = function(response) {
     console.log( JSON.parse(response) )
 }
-// api.all( callback ) // 全部
-// api.add( '大校', callback ) // 添加
-// api.update( 'Hasaki', 607, callback ) // 更新
+// api.all( callback ) // 全部 
+// api.add( '大校', callback ) // 添加 
+// api.update( 'Hasaki', 607, callback ) // 更新 
 // api.delete( 607, callback ) // 删除
 ```
 > 参数说明　`callback`　回调函数　`data`　字符串　`id`　数字
-#
+#  
 # 定制方法 / 内置函数
 
 ### **常用**
@@ -585,12 +587,12 @@ var ClassOFF = function( fu, CalssName ) {
 |children()|查找 子元素|
 |parent().children()|查找 父子元素|
 |siblings()|查找 父子元素（除过 自己）|
-
-|**Class 操作**||
-|:-|:-|
-|addClass( `'.className'` )|添加|
-|removeClass( `'.className'` )|删除|
-|toggleClass( `'.className'` )|开关|
+|**jQuery 对象 操作**||
+|remove()|删除|
+|empty()|删除（除过 自己）|
+|show()|显示|
+|hide()|隐藏|
+|toggle()|开关|
 
 |**HTML 操作**||
 |:-|:-|
@@ -599,8 +601,17 @@ var ClassOFF = function( fu, CalssName ) {
 |before( )|之前|
 |after( )|之后|
 
-|**取值**||
+### **JQ** [属性操作](http://www.w3school.com.cn/jquery/jquery_ref_attributes.asp)
+|**Class**||
 |:-|:-|
+|hasClass( `".className"` )|查询 返回 ture 或 false|
+|addClass( `".className"` )|添加|
+|removeClass( `".className"` )|删除|
+|toggleClass( `".className"` )|开关|
+|**属性**||
+|attr( `"name"`, `"bigc"` )|赋值|
+|removeAttr( `"name"`, `"bigc"` )|移除|
+|**取值**||
 |val()|**input** 标签 专属|
 |text( )|格式化 文本（有参数则为赋值）|
 |html( )|返回 字符串（有参数则为赋值）|
@@ -699,7 +710,7 @@ var ensure = function( def, result, message ) {
         log('def    = "'+def+'"\nresult = "'+result+'"')
         }
     }
-
+    
 //测试 结果(手工计算) 是否等于 函数返回值 否则 报错
 //举例：
 var sum = function(a, b) {
@@ -737,6 +748,6 @@ ensure( sum(3, 3) ,5 ,'sum错误' )
 
 相关链接：[少杰笔记](https://www.zybuluo.com/Jason1992/note/512575) / [BIGC-HUB](https://github.com/BIGC-HUB)
 
->
+> 
 **Atom** 字体 **Consolas**
 **Atom** 汉化插件 **simplified-chinese-menu**
