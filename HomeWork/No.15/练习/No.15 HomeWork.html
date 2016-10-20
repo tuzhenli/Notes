@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <title>enSure-House</title>
+        <link rel="stylesheet" href="ku/pure-0.6.0/pure.css">
+        <link rel="stylesheet" href="ku/Pure-mobile.css">
+        <style>
+            body {
+                padding-top: 70px;
+                text-align: center;
+                font-size: 22px;
+                background: white;
+            }
+            html, button, input, select, textarea,.pure-g [class *= "pure-u"] {
+                font-family: Microsoft YaHei, Georgia, Times, "Times New Roman", serif;
+            }
+            .hero-fuxuan {
+                padding: 10px;
+                text-align: left;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div class="pure-g">
+            <div class="pure-u-0 pure-u-md-1-5"> 左侧边栏 </div>
+            <div class="pure-u-1 pure-u-md-3-5 Cont">
+                召唤师，请选择您喜欢的英雄
+                <div class="hero-fuxuan">
+
+                </div>
+            </div>
+            <div class="pure-u-0 pure-u-md-1-5"> 右侧边栏 </div>
+        </div>
+
+
+        <script>
+            var log = function() {
+                console.log.apply(console, arguments)
+                }
+                //定义自己的log很重要 enSure增强进化版
+            var ensure = function( def, result, message ) {
+                if( JSON.stringify( def ) !== JSON.stringify( result ) ) {
+                    log('异常————————————>', message)
+                    log('def    = "'+def+'"\nresult = "'+result+'"')
+                    }
+                }
+        </script>
+        <!-- 定制 log -->
+		<script src="ku/jquery-3.1.1.js" charset="utf-8"></script>
+        <script src="debug.js"  charset="utf-8"></script>
+        <!-- 代码 debug -->
+    </body>
+</html>
