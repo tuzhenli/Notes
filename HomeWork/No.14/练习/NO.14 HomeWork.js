@@ -4,26 +4,11 @@
 // 作业 14
 //
 
-var images = [
-    "img/1.jpg",
-    "img/2.jpg",
-    "img/3.jpg",
-    "img/4.jpg",
-    "img/5.jpg",
-    "img/6.jpg",
-]
-
 var GuaSlide = function(element, images) {
-    /*
-    element 是一个 div 容器, DOM 类型, 创建的 slide 就 append 到这个容器中
-    images 是一个包含了图片地址的 array
-    */
     var style = `
             <style>
-                .Cont {
-                    margin: 40px auto;
-                    border: 5px;
-                    border-style: solid;
+                .GuaSlide {
+                    margin: auto;
                     /* 边框 */
                     width: 730px;
                     height: 454px;
@@ -91,7 +76,7 @@ var GuaSlide = function(element, images) {
                 }
             </style>`
     var html = `
-            <div class="Cont">
+            <div class="GuaSlide">
                 <div class="img">
                     <img class="imgs" src=${images[0]} >
                     <img class="imgs" src=${images[1]} >
@@ -111,7 +96,7 @@ var GuaSlide = function(element, images) {
                     <button class="imgs-button" type="button" data-id='6'> 6 </button>
                 </div>
             </div>`
-    $('head').append(style)
+    $(element).append(style)
     $(element).append(html)
     $( '.img' ).on( 'mouseover', function() {
         $('.img-button').css('display','block')
@@ -165,7 +150,14 @@ var GuaSlide = function(element, images) {
     })
 }
 
-GuaSlide('body',images)
+GuaSlide('body',[
+    "imgs/GuaSlide/1.jpg",
+    "imgs/GuaSlide/2.jpg",
+    "imgs/GuaSlide/3.jpg",
+    "imgs/GuaSlide/4.jpg",
+    "imgs/GuaSlide/5.jpg",
+    "imgs/GuaSlide/6.jpg",
+])
 //
 // 本次作业纯属暖身, 随意
 // ============

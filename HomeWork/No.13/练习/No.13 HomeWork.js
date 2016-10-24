@@ -138,9 +138,12 @@ var GuaPrompt = function(title, callback) {
 // 弹窗还包含一个 Cancel 按钮
 // 点击按钮的时候, 调用 callback(index)
 //
-var GuaActions = function(title, actions, callback) {
-		var style = `
-			.tanChuang {
+var tanChuang = function(title, mima) {
+    var style = `
+        <style>
+            /* 弹窗 */
+            .tanChuang {
+                z-index: 1;
                 position: fixed;
                 top: 0px;
                 left: 0px;
@@ -149,60 +152,75 @@ var GuaActions = function(title, actions, callback) {
                 background: black;
                 opacity: 0.96;
                 color: white;
+                text-align: center;
             }
+            /* 背景 */
+            .img-background {
+                position:relative;
+                top: 50%;
+                transform: translateY(-88%);
+                z-index: -1;
+            }
+            #img-background { display: inline-block; }
+            /* 居中 */
             .tan-center {
                 position:relative;
                 top: 50%;
                 transform: translateY(-61.8%);
                 }
-            a.tan-ok-color:visited {color: white;}
+            /* 标题 */
+            .tan-title {
+                font-size: 1.81em;
+                padding: 10px;
+            }
+            /* 内容框 */
             .tan-message {
-                margin: auto;
-                border: 2px;
-                border-style: solid;
-                padding: 30px;
-                width: 300px;
+                padding: 10px;
             }
-            .tan-message-options {
-                border-radius: 22px;
-                width: 100%;
-            }
+            /* 输入框 */
             #id-tan-input {
-                display: none;
+                font-size: 1.61em;
+                color: black;
+                text-align: center;
+                border-radius: 20px;
             }
-			`
-	$('style').append(style)
-    chushi(title)
-    $(actions).each( function( i, e ) {
-        var temp = `
-        <button class="tan-message-options" type="button" >${e}</button>`
-        $( '.tan-message' ).append( temp )
-    })
-    $('.tan-message-options').each( function( i, e ) {
-        var Event = function( ) {
-            callback( i + 1 )
+            #id-tan-input:focus { outline-style: none; }
+            /* 按钮 */
+            .pure-button {
+                color: white;
+                border-radius: 20px;
+                background: rgb(51, 103, 214);
+                text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+                font-size: 100%;
+            }
+        </style>
+        `
+    var temp = `
+        <div class="tanChuang">
+            <div class="tan-center">
+                <div class="tan-title">${title}</div>
+                <div class="tan-message">
+                    <input id="id-tan-input" type="text" value="">
+                </div>
+                <div class="tan-button">
+                    <button id="id-tan-OK"     class="pure-button" type="button">知道</button>
+                    <button id="id-tan-Cancel" class="pure-button" type="button">母鸡</button>
+                </div>
+            </div>
+            <div class="img-background">
+                <img id="img-background pure-img" width="70%" src="imgs/105.Earth.png" alt="background">
+            </div>
+        </div> `
+    $('body').append(style)
+    $('body').append(temp)
+    $('#id-tan-OK').on('click', function() {
+        let value = $('#id-tan-input')[0].value
+        if (value === mima) {
+            $('.tanChuang').remove()
         }
-        $(e).on( 'click', Event )
     })
-    var Event = function( ) {
-        callback( -1 )
-    }
-    $('#id-tan-Cancel').on( 'click', Event )
-    var Event = function( ) {
-        callback( 0 )
-    }
-    $('#id-tan-OK').on( 'click', Event )
-}
-
-
-var actions = ['一秒六脚','光速QA','一秒五刀','原地闪现空大', '可恶a']
-var callback = function(index) {
-    console.log(index);
-    if (index === 0 ) {
+    $('#id-tan-Cancel').on('click', function() {
         $('.tanChuang').remove()
-    }
-    // index 是下标, 具体如下
-    // index 如果是 -1 表明用户点击了 cancel
-    // index 如果是 -2 表明用户点击了 OK
+    })
 }
-GuaActions('你好，这是一个广告', actions, callback)
+tanChuang('你好，是否知道个人档案密钥','123')
