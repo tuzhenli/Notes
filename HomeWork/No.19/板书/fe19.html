@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>music player</title>
+        <style>
+            .center {
+                text-align: center;
+            }
+            h1 {
+                text-align: center;
+                height: 30px;
+                margin: 5px 0;
+            }
+            .right {
+                display: inline-block;
+                float: right;
+            }
+            #id-input-slider {
+                width: 100%;
+            }
+            song {
+                color: blue;
+                cursor: pointer;
+            }
+        </style>
+        <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+        <script>
+            // 应该新建一个对象来保存播放数据
+            // 包括播放模式
+            // 包括播放列表
+            var playerMode = 'loop'
+
+            var log = function() {
+                console.log.apply(console, arguments)
+            }
+            var playerSetTime = function(value) {
+                var player = $('#id-audio-player')[0]
+                var time = player.duration * value / 100
+                player.currentTime = time
+            }
+            var bindSwitch = function() {
+                var player = $('#id-audio-player')[0]
+                // 点击切换歌曲
+                $('song').on('click', function(e){
+                    var self = $(e.target)
+                    var song = self.text()
+                    log('click', song)
+                    // 根据当前播放状态设置 autoplay
+                    player.autoplay = !player.paused
+                    // 切换歌曲
+                    player.src = song
+                    log('duration', player.duration)
+                    // 设置当前歌曲名称
+                    $('#id-h1-song-title').text(song)
+                })
+            }
+            var bindTimeSlider = function() {
+                var player = $('#id-audio-player')[0]
+                $('#id-input-slider').on('change', function(e){
+                    var value = e.target.value
+                    log('value change', typeof value, value)
+                    // 根据百分比 设置 player.currentTime
+                    playerSetTime(parseInt(value))
+                })
+            }
+            var labelFromTime = function(time) {
+                var minutes = Math.floor(time / 60)
+                var seconds = Math.floor(time % 60)
+                var t = `${minutes}:${seconds}`
+                return t
+            }
+            var bindAudioEvents = function() {
+                $('#id-audio-player').on('timeupdate', function(e){
+                    var player = e.target
+                    // log('timeupdate', e)
+                    var value = player.currentTime / player.duration
+                    setSlider(value)
+                    // 设置当前时间 time
+                    // var minutes = Math.floor(player.currentTime / 60)
+                    // var seconds = Math.floor(player.currentTime % 60)
+                    // var time = `${minutes}:${seconds}`
+                    var time = labelFromTime(player.currentTime)
+                    $('#id-time-current').text(time)
+                })
+                // 音乐播放完了之后的时间
+                $("#id-audio-player").on('ended', function(e){
+                    log('播放模式', playerMode)
+                    // 根据播放模式来播放下一首
+                })
+                // 加载音乐后的事件
+                $('#id-audio-player').on('canplay', function(e){
+                    var player = e.target
+                    log('can play', player.duration)
+                    // var minutes = Math.floor(player.duration / 60)
+                    // var seconds = Math.floor(player.duration % 60)
+                    // var time = `${minutes}:${seconds}`
+                    var time = labelFromTime(player.duration)
+                    // 滑条归位， 时间重置
+                    $('#id-input-slider').val(0)
+                    $('#id-time-current').text('0:00')
+                    $('#id-time-duration').text(time)
+                })
+            }
+            var setSlider = function(value) {
+                // log(value, typeof value)
+                // var v = Math.floor(value * 100)
+                var v = value * 100
+                $('#id-input-slider').val(v)
+            }
+            var prevSong = function() {
+                log('上一首')
+            }
+            var nextSong = function() {
+                log('nextSong')
+            }
+            var pauseSong = function(button) {
+                var player = $('#id-audio-player')[0]
+                player.pause()
+                log('pauseSong', player.paused)
+                // 设置当前按钮
+                button.dataset.action = 'play'
+                button.innerText = '播放'
+            }
+            var playSong = function(button) {
+                var player = $('#id-audio-player')[0]
+                player.play()
+                log('playSong')
+                button.dataset.action = 'pause'
+                button.innerText = '暂停'
+            }
+            var bindPlayEvents = function() {
+                // player-play
+                $('.player-play').on('click', 'button', function(e){
+                    var button = e.target
+                    var type = button.dataset.action
+                    // 注意， if 都可以用 字典替代
+                    // if (type == 'prev') {
+                    //
+                    // } else if(type == 'next') {
+                    //
+                    // }
+                    var actions = {
+                        prev: prevSong,
+                        next: nextSong,
+                        play: playSong,
+                        pause: pauseSong,
+                    }
+                    var action = actions[type]
+                    action(button)
+                })
+            }
+            var playerSetPlayMode = function(mode) {
+                playerMode = mode
+            }
+            var bindModeEvents = function() {
+                $('.player-mode').on('click', 'button', function(e){
+                    var button = e.target
+                    var mode = button.dataset.action
+                    // var actions = {
+                    //     single: prevSong,
+                    //     loop: nextSong,
+                    //     random: playSong,
+                    // }
+                    // var action = actions[type]
+                    // action(button)
+                    playerSetPlayMode(mode)
+                })
+            }
+            var bindEvents = function() {
+                bindSwitch()
+                bindTimeSlider()
+                bindAudioEvents()
+                bindPlayEvents()
+                bindModeEvents()
+            }
+            var __main = function() {
+                bindEvents()
+            }
+            $(document).ready(function(){
+                __main()
+            })
+        </script>
+    </head>
+    <body>
+        <audio id=id-audio-player autoplay controls="controls">
+            <source src="大野克夫.mp3">
+            <source src="cornfieldchase.mp3">
+            <source src="letitbe.mp3">
+        </audio>
+        <div class="player-controls">
+            <div class="player-slider">
+                <input id=id-input-slider type="range" value=0 min=0 max=100>
+            </div>
+            <div class="player-time">
+                <time id=id-time-current class=left>0:00</time>
+                <time id=id-time-duration class=right>2:31</time>
+            </div>
+            <h1 id=id-h1-song-title> </h1>
+            <div class="player-play center">
+                <button type="button" data-action=prev>上一首</button>
+                <button type="button" data-action=play>播放</button>
+                <button type="button" data-action=next>下一首</button>
+            </div>
+            <div class="player-mode">
+                <button type="button" data-action=single>单曲</button>
+                <button type="button" data-action=loop>循环</button>
+                <button type="button" data-action=random>随机</button>
+            </div>
+        </div>
+        <div class="play-list-container">
+            <ul class="play-list">
+                <li>
+                    <song>大野克夫.mp3</song>
+                </li>
+                <li>
+                    <song>cornfieldchase.mp3</song>
+                </li>
+                <li>
+                    <song>letitbe.mp3</song>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

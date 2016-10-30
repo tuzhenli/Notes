@@ -2,7 +2,7 @@ var chushi = function( ) {
     var html = `<div class="notePad">
         <span style="display: block; height: 30px"></span>
         <div class="notePad_form">
-            <input  id="id-input-form" type="text"   value="-NotePad-"> <br>
+            <input  id="id-input-form" type="text" placeholder="今天做点什么" value=""> <br>
             <button id="id-button-add" type="button" >　Add　</button>
         </div>
         <div id="id-div-cont">
@@ -11,34 +11,39 @@ var chushi = function( ) {
     </div>`
     var omg = document.querySelector ( ".top" )
     omg.insertAdjacentHTML( 'afterend', html )
+    if (localStorage.noteList === undefined || localStorage.noteList === '[]') {
+        localStorage.noteList = JSON.stringify([{"value":"测试 喝水","time":"北京时间：09月10日 10时53分10秒"},{"value":"测试 吃饭","time":"北京时间：02月17日 14时09分39秒"}])
+    }
 }
 var bindEventAdd = function() {
     var Event = function() {
         var input_Value = document.querySelector ( "#id-input-form" )[ 'value' ]
         // 获得 输入框 id-input 的 value 值
-        var notepad_Cont = document.querySelector ( "#id-div-cont" )
-        var Time = nowTime()
-        var temp =
-        `<div class="notePad_one">
-            <span   class="change"contenteditable="false">${Time}</span>
-            <br>
-            <span   class="change"contenteditable="false">${input_Value}</span>
-            <button class="done">完成</button>
-            <button class="del" >删除</button>
-            <button class="bianji">编辑</button>
-        </div>`
-        // 获得 包含 value 的 html 代码
-        notepad_Cont.insertAdjacentHTML( 'beforeend', temp )
-        // 插入 包含 value 的 html 代码 到 父元素 末尾
-        var note = {
-            'value' : input_Value,
-            'time'  : Time
+        if (input_Value.length > 0) {
+            var notepad_Cont = document.querySelector ( "#id-div-cont" )
+            var Time = nowTime()
+            var temp =
+            `<div class="notePad_one">
+                <span   class="change"contenteditable="false">${Time}</span>
+                <br>
+                <span   class="change"contenteditable="false">${input_Value}</span>
+                <button class="done">完成</button>
+                <button class="del" >删除</button>
+                <button class="bianji">编辑</button>
+            </div>`
+            // 获得 包含 value 的 html 代码
+            notepad_Cont.insertAdjacentHTML( 'beforeend', temp )
+            // 插入 包含 value 的 html 代码 到 父元素 末尾
+            var note = {
+                'value' : input_Value,
+                'time'  : Time
+            }
+            // 生成一个 note
+            noteList.push(note)
+            // 添加 到  noteList
+            save()
+            // 保存 到 本地
         }
-        // 生成一个 note
-        noteList.push(note)
-        // 添加 到  noteList
-        save()
-        // 保存 到 本地
     }
     var button_add = document.querySelector ( "#id-button-add" )
     // 获取 按钮
