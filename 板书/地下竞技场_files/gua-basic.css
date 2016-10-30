@@ -1,0 +1,246 @@
+/*
+让部分菜单右对齐
+1, 给右对齐菜单加一个 gua-right 类
+2, 设置样式, 右浮动
+*/
+.gua-right {
+    float: right;
+}
+
+/*
+给基础导航栏加上一个 高亮当前菜单 功能
+1, 给当前菜单设置 gua-active 类
+2, 给 gua-active 写样式
+*/
+a.gua-active {
+    background: red;
+}
+
+/*
+基础导航栏做法
+1, 设置导航栏背景色为黑色
+2, 设置链接的 display color padding 居中, 删除下划线
+3, 给链接设置 hover 的颜色和背景色
+*/
+nav {
+    background: black;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    /* effect */
+    opacity: 0.8;
+}
+
+body {
+    padding-top: 62px;
+}
+
+/* 组合选择器, 选中 class 为 gua-nav-item 的 a 标签*/
+/* 当然, 不写 a 也是一样的 */
+a.gua-nav-link {
+    /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
+    display: inline-block;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    height: inherit;
+    float: left;
+}
+
+a.gua-nav-image {
+    padding: 5px 20px 5px 20px;
+    height: inherit;
+}
+
+/* 鼠标移上去的时候, 设置新颜色 */
+a.gua-nav-link:hover, a.gua-nav-image:hover {
+    background-color: white;
+    color: black;
+    /* 鼠标指针变为链接手 */
+    cursor: pointer;
+}
+
+
+/*
+侧边栏
+*/
+.gua-nav {
+    height: 90vh;
+    overflow: auto;
+}
+.gua-nav-item {
+    margin: 0;
+    padding: 5px 0;
+    /*background: darkgrey;*/
+}
+.gua-nav-item:hover {
+    background: #95dada;
+}
+.gua-nav-item > a {
+    text-decoration: none;
+    color: darkslategray;
+}
+
+/*.gua-nav-item:hover {*/
+    /*background: whitesmoke;*/
+/*}*/
+/*.gua-nav-item:hover > a {*/
+    /*color: black;*/
+/*}*/
+
+.gua-block {
+    overflow: hidden;
+    /*margin: 5px;*/
+    padding: 5px;
+    /*border-style: 1px solid;*/
+}
+
+.gua-block:hover {
+    background: #95dada;
+}
+
+.gua-activity {
+    border-bottom: 1px dashed lightgray;
+}
+.gua-activity > div {
+    margin-left: 60px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.gua-activity > .gua-title {
+    position: relative;
+    /*font-size: x-large;*/
+    /*font-weight: bold;*/
+}
+
+a.gua-topic-link {
+    text-decoration: none;
+}
+
+.gua-topic-title {
+    /*display: inline-block;*/
+    padding-right: 42px;
+    color: darkslategray;
+}
+.gua-topic-time {
+    font-size: 13px;
+    color: lightslategray;
+}
+.gua-topic-views {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 13px;
+    border-radius: 5px;
+    background: darkorange;
+    padding: 4px;
+    color: white;
+}
+
+.gua-activity > img.gua-avatar {
+    float: left;
+}
+
+
+div.gua-flex {
+    display: flex;
+}
+
+div.gua-main {
+    margin: 5%;
+}
+
+.gua-left {
+    width: 200px;
+    position: fixed;
+}
+
+.gua-center {
+    margin-left: 200px;
+}
+
+.gua-button-toggle-update {
+    float: right;
+    margin-left: 10px;
+}
+
+.gua-button-delete {
+    float: right;
+    margin-left: 10px;
+}
+
+.gua-button-submit {
+    float: right;
+    margin-left: 10px;
+}
+
+.gua-button-cancel {
+    float: right;
+    margin-left: 10px;
+}
+
+input, textarea {
+    box-sizing: border-box;
+}
+
+.gua-full {
+    width: 100%;
+}
+
+.gua-content {
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    font-size: 14px;
+}
+
+textarea.gua-content{
+    height: 200px;
+}
+
+
+/*
+首页 css
+*/
+div.scroll-container {
+    overflow: scroll;
+    height: 80vh;
+}
+
+div.vip-content img {
+    max-width: 100%;
+}
+
+img.gua-avatar {
+    max-width: 50px;
+    max-height: 80px;
+}
+
+
+.pure-table tr td:first-child {
+    /* 颜色抄袭自 pure-table-odd */
+    background-color: #f2f2f2
+}
+
+.pure-table tr td:first-child {
+    padding: 2%
+}
+
+.markdown-body {
+    max-width: 980px;
+    font-size: 14px !important;
+}
+
+.markdown-body pre {
+    background-color: transparent !important;
+    font-size:100% !important;
+}
+
+.gua-solved {
+    color: limegreen;
+}

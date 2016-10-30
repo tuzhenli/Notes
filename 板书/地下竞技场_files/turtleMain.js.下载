@@ -1,0 +1,70 @@
+window.log = function() {
+    console.log(arguments);
+};
+
+var initTurtle = function() {
+    // 绑定方法
+    var t = new Turtle(document.getElementById('id-canvas'))
+    window.debugT = t
+    var methods = [
+        'forward',
+        'backward',
+        'goto',
+        'left',
+        'right',
+        'setHeading',
+        'heading',
+        'towards',
+        'penup',
+        'pendown',
+        'setPenSize',
+        'setPenColor',
+        'show',
+        'hide',
+        'setDelay',
+    ]
+    for (var i = 0; i < methods.length; i++) {
+        var m = methods[i]
+        window[m] = t[m].bind(t)
+    }
+    // 增加 jump
+    window.jump = function(x, y) {
+        penup()
+        window.goto(x, y)
+        pendown()
+    }
+};
+
+var initCodeMirror = function() {
+    var mirror = document.getElementById('code-mirror');
+    window.g_editor = CodeMirror.fromTextArea(mirror, {
+        lineNumbers: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        viewportMargin: Infinity,
+        theme: 'material'
+    });
+};
+
+var __main = function() {
+    initTurtle();
+    initCodeMirror();
+};
+
+var codeFromEditor = function() {
+    var code = g_editor.getValue();
+    return code;
+};
+
+var runCode = function(code) {
+    eval(code);
+};
+
+$(document).ready(function() {
+    __main();
+
+    $('#button-run').on('click', function() {
+        var code = codeFromEditor();
+        runCode(code);
+    });
+});
