@@ -1,11 +1,77 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>fe20</title>
+      <meta charset="utf-8">
+      <title>enSure</title>
+      <link rel="stylesheet" href="ku/Pure-release-0.6.0/pure-min.css">
+      <link rel="stylesheet" href="ku/Pure-mobile.css">
+      <link rel="stylesheet" href="ku/Font-awesome-4.6.3/css/font-awesome.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- 主要样式 -->
+      <style>
+          a:link   { color: rgb(51, 103, 214); text-decoration: none; } /*去下划线*/
+          a:visited{ color: rgb(51, 103, 214); }
+          a:active { color: rgb( 5,  37, 119); }
+          html, button, input, select, textarea,
+          .pure-g [class *= "pure-u"] {
+              /* 字体栈写在这: */
+              font-family: Roboto, 'Segoe UI',Arial,'Microsoft Yahei',sans-serif;
+          }
+          html {
+              text-align: center;
+              background: rgb(241, 241, 241);
+              color: rgb(104, 113, 116);
+              font-weight: 500;
+              font-size: 1.17em;
+          }
+          .top {
+              position:fixed;
+              width: 100%;
+              height: 3em;
+              background: black;
+              opacity: 0.86;
+              font-weight: 300;
+              color: rgb(241, 241, 241);
+          }
+          a.top-a:link   { color: white; text-decoration: none; } /*去下划线*/
+          a.top-a:visited{ color: white; }
+          a.top-a:active { color: rgb( 175, 175, 175); }
+          .top-center {
+              position: relative;
+              top: 50%;
+              transform: translateY(-50%);
+              margin: auto;
+          }
+          /* 背景 */
+          .cont-background {
+              background: url('imgs/104.Matrix.png') no-repeat top;
+              background-size: 457px;
+          }
+          /* 评论 */
+          #id-comment-text,#id-comment-okay,.message {
+              margin: 0 auto;
+          }
+          .message {
+              text-align: justify;
+          }
+          #id-comment-okay {
+              text-align: right;
+              margin: 0 auto 1.41em auto;
+          }
+          .message-cont {
+              border: 0;
+              border-top: 0.1em;
+              border-style: solid;
+              padding: 0.5em 0 2em 0;
+          }
+          .message-name {
+              border-top-right-radius: 14px;
+              color: rgb(155, 155, 155);
+              background: rgb(34, 34, 34);
+          }
+      </style>
   </head>
   <body>
-    <h1>hello world</h1>
     <div class="notePad">
         <style>
             .doneStyle {
@@ -30,20 +96,19 @@
         </div>
         <span style="display: block; height: 5em"></span>
     </div>
-    <script src="jquery/dist/jquery.min.js" charset="utf-8"></script>
     <script>
-        $.ajax({
-            url: '/todo/all',
-            type: 'get',
-            contentType: 'application/json',
-            // data: JSON.stringify({name: '大校', hero:'盲僧'}),
-            success: function() {
-                console.log('请求成功',arguments)
-            },
-            error: function() {
-                console.log('error',arguments)
+        var log = function() {
+            console.log.apply(console, arguments)
             }
-        })
+            //定义自己的log很重要 enSure增强进化版 穿衣服
+        var ensure = function( def, result, message ) {
+            if( JSON.stringify( def ) !== JSON.stringify( result ) ) {
+                log('异常————————————>', message)
+                log('def    = "'+def+'"\nresult = "'+result+'"')
+                }
+            }
     </script>
+    <script src="ku/jquery-3.1.1.js"></script>
+    <script src="todoList.js"></script>
   </body>
 </html>

@@ -27,20 +27,6 @@ app.get('/', function(req, res) {
 })
 // 读取 文件
 
-app.post('/text', function (req, res) {
-    var data = JSON.stringify(req.body)
-    var fs = require("fs");
-    fs.writeFile('data.txt', data, function (err) {
-        if (err) {
-              res.send('错误！')
-        } else {
-              res.send('POST 数据已保存')
-        }
-   })
-})
-// 写入 数据
-
-
 app.get('/todo/all', function(req, res) {
     var sendFile = function(path, res) {
         var fs = require('fs')
@@ -52,15 +38,27 @@ app.get('/todo/all', function(req, res) {
             }
         })
     }
-    var path = 'data.txt'
+    var path = 'data'
     sendFile(path, res)
 })
+// 读取 数据
+
+app.post('/todo/save', function (req, res) {
+    var data = JSON.stringify(req.body)
+    var fs = require("fs");
+    fs.writeFile('data', data, function (err) {
+        if (err) {
+              res.send('错误！')
+        } else {
+              res.send('POST 数据已保存')
+        }
+   })
+})
+// 写入 数据
 
 var server = app.listen(8081, function() {
-
     var host = server.address().address
     var port = server.address().port
-
     console.log("应用实例，访问地址为 http://%s:%s", host, port)
 })
 
