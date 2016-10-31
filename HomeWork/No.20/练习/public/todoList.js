@@ -193,29 +193,25 @@ var initNotes = function() {
     // 读取数据
 }
 // 读取数据 初始化
-var chushi = function() {
+var __init__ = function() {
+    var callback = function(e) {
+        if (e === ''|| e === '[]') {
+            noteList = [{time:'03月10日 13时59分17秒 星期天',value:'纪念日'}]
+        } else {
+            noteList = JSON.parse(e)
+        }
+        initNotes()    //加载 数据
+        bindEvents()   //绑定 事件
+    }
     $.ajax({
         url: '/todo/all',
         type: 'get',
         contentType: 'application/json',
-        success: function(e) {
-            if (e === ''|| e === '[]') {
-                noteList = [{time:'03月10日 13时59分17秒 星期天',value:'纪念日'}]
-            } else {
-                noteList = JSON.parse(e)
-            }
-        },
+        success: callback,
         error: function() {
-            console.log('error',arguments)
+            console.log('错误！',arguments)
         }
     })
 }
-chushi()
+__init__()
 //初始化 数据列表
-var __init__ = function() {
-    initNotes()    //读取数据
-    bindEvents()   //绑定 事件
-}
-$(document).ready(function() {
-    __init__()
-})
