@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>fe20</title>
+  </head>
+  <body>
+    <h1>hello world</h1>
+    <div class="notePad">
+        <style>
+            .doneStyle {
+                text-decoration: line-through;
+                color: gray;
+            }
+            .button-small {
+                font-size: 85%;
+                background: rgb(66, 184, 221);
+            }
+        </style>
+        <span style="display: block; height: 3em"></span>
+        <div class="works"><h2>Works - 全功能Todo</h2></div>
+        <span style="display: block; height: 3em"></span>
+        <div class="notePad_form tan-message pure-form">
+            <input style="display:inline-block;" id="id-input-form" type="text" placeholder="今天做点什么" value="">
+            <button class="pure-button pure-button-primary" id="id-button-add" type="button" >　添加　</button>
+            <br><br>
+        </div>
+        <div id="id-div-cont">
+
+        </div>
+        <span style="display: block; height: 5em"></span>
+    </div>
+    <script src="jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script>
+        $.ajax({
+            url: '/todo/all',
+            type: 'get',
+            contentType: 'application/json',
+            // data: JSON.stringify({name: '大校', hero:'盲僧'}),
+            success: function() {
+                console.log('请求成功',arguments)
+            },
+            error: function() {
+                console.log('error',arguments)
+            }
+        })
+    </script>
+  </body>
+</html>
